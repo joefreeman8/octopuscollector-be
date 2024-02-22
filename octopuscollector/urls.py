@@ -28,9 +28,11 @@ router.register(r'octopus', views.OctopusViewSet)
 # Create a nested router for the octopus
 # * installed "pip install drf-nested-routers"
 octopus_router = routers.NestedSimpleRouter(
-    router, r'octopus', lookup='octopus')
+    router, r'octopus', lookup='octopus'
+)
 octopus_router.register(
-    r'sightings', views.SightingViewSet, basename='octopus-sightings')
+    r'sightings', views.SightingViewSet, basename='octopus-sightings'
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

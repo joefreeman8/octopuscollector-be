@@ -15,25 +15,11 @@ class OctopusViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
-# class SightingViewSet(viewsets.ModelViewSet):
-#     queryset = Sighting.objects.all()
-#     serializer_class = SightingSerializer
-#     permision_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-
 class SightingViewSet(viewsets.ModelViewSet):
     serializer_class = SightingSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        """
-        Optionally restricts the returned sightings to a given octopus,
-        by filtering against a `octopus_id` query parameter in the URL.
-        """
-        queryset = Sighting.objects.all()
-        lookup_field = 'pk'
-        # `octopus_pk` matches the lookup field from the router
+        # Filter the sightings based on the parent octopus ID
         octopus_id = self.kwargs.get('octopus_pk')
-        if octopus_id is not None:
-            queryset = queryset.filter(octopus_id=octopus_id)
-        return queryset
+        return Sighting.objects.filter(octopus_id=octopus_id)
