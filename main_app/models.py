@@ -11,3 +11,34 @@ class Octopus(models.Model):
 
     def __str__(self):
         return self.name
+
+
+SEAS = (
+    ('ATL', 'Atlantic Ocean'),
+    ('PAC', 'Pacific Ocean'),
+    ('IND', 'Indian Ocean'),
+    ('ARC', 'Arctic Ocean'),
+    ('SOU', 'Southern Ocean'),
+    ('CAR', 'Carribean Sea'),
+    ('PHI', 'Philippine Sea'),
+    ('COR', 'Coral Sea'),
+    ('MED', 'Mediterranean Sea'),
+    ('MEX', 'Gulf Of Mexico')
+)
+
+
+class Sighting(models.Model):
+    date = models.CharField('Sighting Date')
+    location = models.CharField(
+        max_length=3,
+        choices=SEAS,
+        default=SEAS[0][0]
+    )
+    # octopus FK
+    octopus = models.ForeignKey(Octopus, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.get_location_display()} on {self.date}"
+
+    class Meta:
+        ordering = ['-date']

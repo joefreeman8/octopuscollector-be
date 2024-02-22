@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import Octopus
+from .models import Octopus, Sighting
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -12,4 +12,10 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class OctopusSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Octopus
+        fields = '__all__'
+
+
+class SightingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sighting
         fields = '__all__'
