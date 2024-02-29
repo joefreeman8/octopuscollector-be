@@ -18,12 +18,14 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_nested import routers
+from rest_framework_simplejwt import views as jwt_views
 from main_app import views
 
 # Create main router
 router = DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'octopus', views.OctopusViewSet)
+router.register(r'photo', views.PhotoViewSet)
 
 # Create a nested router for the octopus
 # * installed "pip install drf-nested-routers"
@@ -33,9 +35,22 @@ octopus_router = routers.NestedSimpleRouter(
 octopus_router.register(
     r'sightings', views.SightingViewSet, basename='octopus-sightings'
 )
+# octopus_router.register(
+#     r'photo', views.PhotoViewSet, basename='octopus-photo'
+# )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('token/', jwt_views.TokenObtainPairView.as_view(),
+         name="token_obtain_pair"),
+    path('token/refresh', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('logout/', views.LogoutView.as_view(), name='auth_logout'),
+    path('signup/', views.SignupView.as_view(), name='signup'),
+
     path('', include(router.urls)),
     path('', include(octopus_router.urls)),
+    # path('octopus/<int: octopus_id>/add_photo')
+
+
+
 ]

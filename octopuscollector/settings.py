@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+from datetime import timedelta
 import environ
 import os
 
@@ -32,7 +32,10 @@ SECRET_KEY = 'django-insecure-c4tw)4!isp563=$j98b@_&l%#ozfgz6!=u9e0nr8qpq-%)yd+7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+
+]
 
 
 # Application definition
@@ -44,11 +47,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "corsheaders",
+    'whitenoise.runserver_nostatic',
     'main_app',
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist'
 ]
 
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,7 +67,21 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+# CORS_ORIGIN_WHITELIST = [
+#     'http://localhost:3000/',
+#     # 'https://example.com',
+#     # other origins...
+# ]
+
 ROOT_URLCONF = 'octopuscollector.urls'
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost',
+    'http://127.0.0.1'
+]
+
 
 TEMPLATES = [
     {
@@ -88,10 +111,10 @@ DATABASES = {
         'NAME': os.environ['PGDATABASE'],
         'HOST': os.environ['PGHOST'],
         'PORT': os.environ['PGPORT'],
+        'USER': os.environ['PGUSERNAME'],
+        'PASSWORD': os.environ['PGPASSWORD'],
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -128,7 +151,39 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = os.environ['S3_BUCKET']
+AWS_S3_SIGNATURE_VERSION = 's3v4'
+AWS_S3_REGION_NAME = os.environ['S3_LOCATION']
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERIFY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ]
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True
+}
+
+
+# * pip3 install django-storages
