@@ -34,6 +34,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
+    'octopuscollector-be-production.up.railway.app',
+    'octopuscollector-be.railway.internal'
 
 ]
 
