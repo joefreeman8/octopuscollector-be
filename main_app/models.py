@@ -51,5 +51,8 @@ class Photo(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     octopus = models.ForeignKey(Octopus, on_delete=models.CASCADE)
 
+    class Meta:
+        verbose_name_plural = 'Photos'
+
     def __str__(self):
-        return f"Photo for octopus_id: {self.octopus_id} @{self.url}"
+        return f"Photo for octopus_id: {self.octopus_id} @{self.document}"

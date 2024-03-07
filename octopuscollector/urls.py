@@ -25,7 +25,7 @@ from main_app import views
 router = DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'octopus', views.OctopusViewSet)
-router.register(r'photo', views.PhotoViewSet)
+
 
 # Create a nested router for the octopus
 # * installed "pip install drf-nested-routers"
@@ -35,9 +35,9 @@ octopus_router = routers.NestedSimpleRouter(
 octopus_router.register(
     r'sightings', views.SightingViewSet, basename='octopus-sightings'
 )
-# octopus_router.register(
-#     r'photo', views.PhotoViewSet, basename='octopus-photo'
-# )
+octopus_router.register(
+    r'photo', views.PhotoViewSet, basename='octopus-photo'
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -49,7 +49,7 @@ urlpatterns = [
 
     path('', include(router.urls)),
     path('', include(octopus_router.urls)),
-    # path('octopus/<int: octopus_id>/add_photo')
+
 
 
 

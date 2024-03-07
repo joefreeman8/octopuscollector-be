@@ -21,27 +21,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class OctopusViewSet(viewsets.ModelViewSet):
-    queryset = Octopus.objects.all()
+    queryset = Octopus.objects.all().prefetch_related('photo_set', 'sighting_set')
     serializer_class = OctopusSerializer
     # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-    # @action(detail=True, methods=['POST'])
-    # def add_photo(self, request, pk=None):
-    #     octopus = self.get_object()
-    #     photo_file = request.FILES.get('photo-file', None)
-    #     if photo_file:
-    #         s3 = boto3.client('s3')
-    #         key = uuid.uuid4().hex[:6] + \
-    #             photo_file.name[photo_file.name.rfind('.'):]
-    #         try:
-    #             bucket = os.environ['S3_BUCKET']
-    #             s3.upload_fileobj(photo_file, bucket, key)
-    #             url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
-    #             Photo.objects.create(url=url, octopus=octopus)
-    #             return Response({'status': 'photo added'}, status=status.HTTP_201_CREATED)
-    #         except Exception as e:
-    #             return Response({'status': 'error uploading to S3', 'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    #     return Response({'status': 'no file provided'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class SightingViewSet(viewsets.ModelViewSet):
@@ -54,23 +36,13 @@ class SightingViewSet(viewsets.ModelViewSet):
         return Sighting.objects.filter(octopus_id=octopus_id)
 
 
-# class PhotoViewSet(viewsets.ModelViewSet):
-#     serializer_class = PhotoSerializer
-
-#     def get_queryset(self):
-#         # `octopus_pk` is the URL keyword argument set by the nested router
-#         octopus_id = self.kwargs.get('octopus_pk')
-#         return Photo.objects.filter(octopus_id=octopus_id)
-
-#     def perform_create(self, serializer):
-#         octopus_id = self.kwargs.get('octopus_pk')
-#         octopus = Octopus.objects.get(pk=octopus_id)
-#         serializer.save(octopus=octopus)
-
-
 class PhotoViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
-    queryset = Photo.objects.all()
+    def get_queryset(self):
+        # `octopus_pk` is the URL keyword argument set by the nested router
+        octopus_id = self.kwargs.get('octopus_pk')
+        return Photo.objects.filter(octopus_id=octopus_id)
+
     serializer_class = PhotoSerializer
     parser_classes = [parsers.MultiPartParser, parsers.FormParser]
     http_method_names = ['get', 'post', 'patch', 'delete']

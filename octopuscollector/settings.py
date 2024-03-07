@@ -34,6 +34,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'localhost',
+    '127.0.0.1',
     'octopuscollector-be-production.up.railway.app',
     'octopuscollector-be.railway.internal'
 
@@ -81,7 +82,8 @@ ROOT_URLCONF = 'octopuscollector.urls'
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost',
-    'http://127.0.0.1'
+    'http://127.0.0.1',
+    'https://octopuscollector-fe-production.up.railway.app'
 ]
 
 
@@ -181,7 +183,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True
