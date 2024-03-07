@@ -23,7 +23,11 @@ SEAS = (
     ('PHI', 'Philippine Sea'),
     ('COR', 'Coral Sea'),
     ('MED', 'Mediterranean Sea'),
-    ('MEX', 'Gulf Of Mexico')
+    ('MEX', 'Gulf Of Mexico'),
+    ('THA', 'Gulf Of Thailand'),
+    ('BEN', 'Bay Of Bengal'),
+    ('JAV', 'Java Sea'),
+    ('RED', 'Red Sea')
 )
 
 

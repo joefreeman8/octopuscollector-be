@@ -35,6 +35,11 @@ class SightingViewSet(viewsets.ModelViewSet):
         octopus_id = self.kwargs.get('octopus_pk')
         return Sighting.objects.filter(octopus_id=octopus_id)
 
+    def perform_create(self, serializer):
+        octopus_id = self.kwargs.get('octopus_pk')
+        octopus = Octopus.objects.get(pk=octopus_id)
+        serializer.save(octopus=octopus)
+
 
 class PhotoViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
