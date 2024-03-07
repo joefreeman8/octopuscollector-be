@@ -12,7 +12,8 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
-        fields = ['title', 'document', 'created_at', 'updated_at']
+        fields = ['title', 'document', 'created_at',
+                  'updated_at', 'octopus_id']
 
 
 class SightingSerializer(serializers.ModelSerializer):

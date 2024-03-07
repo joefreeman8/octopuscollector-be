@@ -28,7 +28,7 @@ class OctopusViewSet(viewsets.ModelViewSet):
 
 class SightingViewSet(viewsets.ModelViewSet):
     serializer_class = SightingSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         # Filter the sightings based on the parent octopus ID
@@ -38,14 +38,19 @@ class SightingViewSet(viewsets.ModelViewSet):
 
 class PhotoViewSet(viewsets.ModelViewSet):
     # permission_classes = (IsAuthenticated,)
+    serializer_class = PhotoSerializer
+    parser_classes = [parsers.MultiPartParser, parsers.FormParser]
+    http_method_names = ['get', 'post', 'patch', 'delete']
+
     def get_queryset(self):
         # `octopus_pk` is the URL keyword argument set by the nested router
         octopus_id = self.kwargs.get('octopus_pk')
         return Photo.objects.filter(octopus_id=octopus_id)
 
-    serializer_class = PhotoSerializer
-    parser_classes = [parsers.MultiPartParser, parsers.FormParser]
-    http_method_names = ['get', 'post', 'patch', 'delete']
+    def perform_create(self, serializer):
+        octopus_id = self.kwargs.get('octopus_pk')
+        octopus = Octopus.objects.get(pk=octopus_id)
+        serializer.save(octopus=octopus)
 
 
 class LogoutView(APIView):
