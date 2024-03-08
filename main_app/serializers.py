@@ -17,9 +17,16 @@ class PhotoSerializer(serializers.ModelSerializer):
 
 
 class SightingSerializer(serializers.ModelSerializer):
+    # creates a field which isn't in my model
+    location_display = serializers.SerializerMethodField()
+
+    # populates the field above from data in model, -> obj refers to the model
+    def get_location_display(self, obj):
+        return obj.get_location_display()
+
     class Meta:
         model = Sighting
-        fields = ['date', 'location']
+        fields = ['date', 'location', 'location_display', 'octopus']
 
 
 class OctopusSerializer(serializers.ModelSerializer):
