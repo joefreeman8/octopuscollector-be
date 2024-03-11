@@ -34,7 +34,17 @@ class OctopusSerializer(serializers.ModelSerializer):
     sightings = SightingSerializer(
         source='sighting_set', many=True, read_only=True)
 
+    sightings_this_week = serializers.SerializerMethodField()
+
+    def get_sightings_this_week(self, obj):
+        return obj.sightings_this_week()
+
+    sightings_this_month = serializers.SerializerMethodField()
+
+    def get_sightings_this_month(self, obj):
+        return obj.sightings_this_month()
+
     class Meta:
         model = Octopus
         fields = ['id', 'name', 'scientific_name', 'description',
-                  'life_span', 'photos', 'sightings']
+                  'life_span', 'photos', 'sightings', 'sightings_this_week', 'sightings_this_month']
