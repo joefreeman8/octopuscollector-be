@@ -6,13 +6,13 @@ from .models import Octopus, Photo, Sighting
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['username', 'email']
+        fields = ['id', 'username', 'email']
 
 
 class PhotoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Photo
-        fields = ['title', 'document', 'created_at',
+        fields = ['id', 'title', 'document', 'created_at',
                   'updated_at', 'octopus_id']
 
 
