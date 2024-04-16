@@ -21,7 +21,7 @@ class PhotoSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # Extract owner data from validated_data
         owner_data = validated_data.pop('owner')
-        # Create Photo instance
+        # Create Photo instance, spreading in validated_data
         photo = Photo.objects.create(**validated_data)
         # Assign owner to the created photo
         photo.owner = owner_data
