@@ -53,6 +53,7 @@ class PhotoViewSet(viewsets.ModelViewSet):
         return Photo.objects.filter(octopus_id=octopus_id)
 
     def perform_create(self, serializer):
+
         octopus_id = self.kwargs.get('octopus_pk')
         octopus = Octopus.objects.get(pk=octopus_id)
         serializer.save(octopus=octopus)

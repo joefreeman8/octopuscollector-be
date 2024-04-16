@@ -6,14 +6,27 @@ from .models import Octopus, Photo, Sighting
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'email']
+        fields = ['id', 'username', 'email', 'is_staff']
 
 
 class PhotoSerializer(serializers.ModelSerializer):
+
+    owner = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
     class Meta:
         model = Photo
         fields = ['id', 'title', 'document', 'created_at',
-                  'updated_at', 'octopus_id']
+                  'updated_at', 'octopus_id', 'owner']
+
+    def create(self, validated_data):
+        # Extract owner data from validated_data
+        owner_data = validated_data.pop('owner')
+        # Create Photo instance
+        photo = Photo.objects.create(**validated_data)
+        # Assign owner to the created photo
+        photo.owner = owner_data
+        photo.save()
+        return photo
 
 
 class SightingSerializer(serializers.ModelSerializer):
