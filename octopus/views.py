@@ -27,10 +27,14 @@ class OctopusListView(APIView):
 
 class OctopusDetailView(APIView):
 
-    def get(self, _request, pk):
+    def get_octopus(self, pk):
         try:
-            single_octopus = Octopus.objects.get(pk=pk)
-            serialized_single_octopus = OctopusSerializer(single_octopus)
-            return Response(serialized_single_octopus.data, status=status.HTTP_200_OK)
+            return Octopus.objects.get(pk=pk)
         except Octopus.DoesNotExist:
             raise NotFound(detail="Can't find this Octopus, are you sure it exists?")
+        
+    def get(self, _request, pk):
+            single_octopus = self.get_octopus(pk=pk)
+            serialized_single_octopus = OctopusSerializer(single_octopus)
+            return Response(serialized_single_octopus.data, status=status.HTTP_200_OK)
+            
