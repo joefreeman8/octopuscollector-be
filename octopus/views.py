@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.exceptions import NotFound
 from rest_framework import status
 
 from .models import Octopus
@@ -21,3 +22,15 @@ class OctopusListView(APIView):
         except Exception as e: 
             print('Error')
             return Response(e.__dict__ if e.__dict__ else str(e), status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+
+
+class OctopusDetailView(APIView):
+
+    def get(self, _request, pk):
+        try:
+            single_octopus = Octopus.objects.get(pk=pk)
+            serialized_single_octopus = OctopusSerializer(single_octopus)
+            return Response(serialized_single_octopus.data, status=status.HTTP_200_OK)
+        except Octopus.DoesNotExist:
+            raise NotFound(detail="Can't find this Octopus, are you sure it exists?")
