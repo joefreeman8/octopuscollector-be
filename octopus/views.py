@@ -41,7 +41,6 @@ class OctopusDetailView(APIView):
     def put(self, request, pk):
         octopus_to_edit = self.get_octopus(pk=pk)
         update_octopus = OctopusSerializer(octopus_to_edit, data=request.data)
-        
         try:
             update_octopus.is_valid()
             update_octopus.save()
@@ -49,4 +48,8 @@ class OctopusDetailView(APIView):
         except Exception as e:
             return Response({ 'detail': str(e)}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         
-        
+
+    def delete(self, _request, pk):
+        octopus_to_delete = self.get_octopus(pk=pk)
+        octopus_to_delete.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
