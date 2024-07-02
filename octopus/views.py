@@ -4,7 +4,8 @@ from rest_framework.exceptions import NotFound
 from rest_framework import status
 
 from .models import Octopus
-from .serializers import OctopusSerializer
+from .serializers.common import OctopusSerializer
+from .serializers.populated import PopulatedOctopusSerializer
 
 class OctopusListView(APIView):
 
@@ -35,7 +36,7 @@ class OctopusDetailView(APIView):
         
     def get(self, _request, pk):
             single_octopus = self.get_octopus(pk=pk)
-            serialized_single_octopus = OctopusSerializer(single_octopus)
+            serialized_single_octopus = PopulatedOctopusSerializer(single_octopus)
             return Response(serialized_single_octopus.data, status=status.HTTP_200_OK)
             
     def put(self, request, pk):

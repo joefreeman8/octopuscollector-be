@@ -12,7 +12,7 @@ class Sighting(models.Model):
     # octopus FK
     octopus = models.ForeignKey(
         'octopus.Octopus',
-        related_name='octopus',
+        related_name='sightings',
         on_delete=models.CASCADE
     )
 
