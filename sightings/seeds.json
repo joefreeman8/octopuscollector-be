@@ -1,0 +1,11 @@
+[
+{
+  "model": "sightings.sighting",
+  "pk": 2,
+  "fields": {
+    "date": "2024-06-30",
+    "location": "The Red Sea",
+    "octopus": 2
+  }
+}
+]
