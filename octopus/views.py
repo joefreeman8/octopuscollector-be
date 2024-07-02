@@ -42,12 +42,12 @@ class OctopusDetailView(APIView):
     def put(self, request, pk):
         octopus_to_edit = self.get_octopus(pk=pk)
         update_octopus = OctopusSerializer(octopus_to_edit, data=request.data)
-        try:
-            update_octopus.is_valid()
+        
+        if update_octopus.is_valid():
             update_octopus.save()
             return Response(update_octopus.data, status=status.HTTP_202_ACCEPTED)
-        except Exception as e:
-            return Response({ 'detail': str(e)}, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        
+        return Response(update_octopus.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         
 
     def delete(self, _request, pk):
