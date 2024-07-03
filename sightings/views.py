@@ -39,7 +39,7 @@ class SightingDetailView(APIView):
         
     def get(self, _request, pk):
         sighting = self.get_sighting(pk=pk)
-        serialized_sighting = SightingSerializer(sighting)
+        serialized_sighting = PopulatedSightingSerializer(sighting)
         return Response(serialized_sighting.data, status=status.HTTP_200_OK)
     
     def put(self, request, pk):

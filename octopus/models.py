@@ -8,6 +8,11 @@ class Octopus(models.Model):
     scientific_name = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
     life_span = models.IntegerField()
+    owner = models.ForeignKey(
+        'jwt_auth.User',
+        related_name='octopus',
+        on_delete=models.CASCADE
+    )
 
     def sightings_this_week(self):
         one_week_ago = now() - timedelta(days=7)

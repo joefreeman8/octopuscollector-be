@@ -1,5 +1,7 @@
 from .common import OctopusSerializer
-from sightings.serializers.common import SightingSerializer
+from sightings.serializers.populated import PopulatedSightingSerializer
+from jwt_auth.serializers import UserSerializer
 
 class PopulatedOctopusSerializer(OctopusSerializer):
-    sightings = SightingSerializer(many=True)
+    sightings = PopulatedSightingSerializer(many=True)
+    owner = UserSerializer()
