@@ -44,7 +44,7 @@ class SightingDetailView(APIView):
     
     def put(self, request, pk):
         sighting_to_edit = self.get_sighting(pk=pk)
-        updated_sighting = SightingSerializer(sighting_to_edit, data=request.data)
+        updated_sighting = SightingSerializer(sighting_to_edit, data=request.data, partial=True)
 
         if sighting_to_edit.owner != request.user:
             return Response({'message': 'Unauthorized action'}, status=status.HTTP_401_UNAUTHORIZED)
