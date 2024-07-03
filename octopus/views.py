@@ -6,8 +6,11 @@ from rest_framework import status
 from .models import Octopus
 from .serializers.common import OctopusSerializer
 from .serializers.populated import PopulatedOctopusSerializer
+from .permissions import IsAdminOrReadOnly
+
 
 class OctopusListView(APIView):
+    permission_classes = (IsAdminOrReadOnly, )
 
     def get(self, _request):
         octopus = Octopus.objects.all()
@@ -27,6 +30,7 @@ class OctopusListView(APIView):
 
 
 class OctopusDetailView(APIView):
+    permission_classes = (IsAdminOrReadOnly, )
 
     def get_octopus(self, pk):
         try:
