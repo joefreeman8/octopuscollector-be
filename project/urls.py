@@ -19,7 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('octopus/', include('octopus.urls')),
+    path('api/octopus/', include('octopus.urls')),
     path('sightings/', include('sightings.urls')),
     path('auth/', include('jwt_auth.urls')),
 ]
