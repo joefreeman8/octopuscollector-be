@@ -16,7 +16,7 @@ class Octopus(models.Model):
 
     def sightings_this_week(self):
         one_week_ago = now() - timedelta(days=7)
-        return self.sighting_set.filter(date__gt=one_week_ago).count()
+        return self.sightings.filter(date__gt=one_week_ago).count()
 
     def sightings_this_month(self):
         today = now().date()
@@ -24,7 +24,7 @@ class Octopus(models.Model):
         one_month_ago = today - timedelta(days=28)
 
         # Filter sightings that are older than a week but less than a month
-        sightings = self.sighting_set.filter(
+        sightings = self.sightings.filter(
             date__gt=one_month_ago, date__lte=one_week_ago).count()
         return sightings
 

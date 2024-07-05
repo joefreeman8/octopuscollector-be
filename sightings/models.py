@@ -15,7 +15,7 @@ class Sighting(models.Model):
         related_name='sightings',
         on_delete=models.CASCADE
     )
-    owner = models.ForeignKey(
+    sighting_owner = models.ForeignKey(
         'jwt_auth.User',
         related_name='sightings',
         on_delete=models.CASCADE
