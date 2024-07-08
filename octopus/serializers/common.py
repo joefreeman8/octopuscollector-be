@@ -3,6 +3,7 @@ from ..models import Octopus
 
 class OctopusSerializer(serializers.ModelSerializer):
 
+    
     class Meta:
         model = Octopus
         fields = ['id', 'name', 'scientific_name', 'description',
