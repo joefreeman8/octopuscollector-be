@@ -17,7 +17,7 @@ class SightingListView(APIView):
         return Response(serialized_sighting.data, status=status.HTTP_200_OK)
     
     def post(self, request):
-        request.data['owner'] = request.user.id
+        request.data['sighting_owner'] = request.user.id
         sighting_to_add = SightingSerializer(data=request.data)
 
         try:
