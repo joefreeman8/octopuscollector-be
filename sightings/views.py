@@ -20,13 +20,12 @@ class SightingListView(APIView):
         request.data['sighting_owner'] = request.user.id
         sighting_to_add = SightingSerializer(data=request.data)
 
-        try:
-            sighting_to_add.is_valid()
+        
+        if sighting_to_add.is_valid():
             sighting_to_add.save()
             return Response(sighting_to_add.data, status=status.HTTP_201_CREATED)
-        except Exception as e: 
-            print('Error')
-            return Response(e.__dict__ if e.__dict__ else str(e), status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        
+        return Response(sighting_to_add.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
 class SightingDetailView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
