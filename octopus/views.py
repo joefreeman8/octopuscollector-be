@@ -45,6 +45,7 @@ class OctopusDetailView(APIView):
             
     def put(self, request, pk):
         octopus_to_edit = self.get_octopus(pk=pk)
+        request.data['owner'] = request.user.id
         update_octopus = OctopusSerializer(octopus_to_edit, data=request.data)
         
         if update_octopus.is_valid():
