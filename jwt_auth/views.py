@@ -40,8 +40,10 @@ class LoginView(APIView):
 
         token = jwt.encode(
             {
-                'sub': user_to_login.id,
-                'exp': int(dt.strftime('%s')) # turns dt string into a number
+                'sub': user_to_login.id, 
+                'is_admin': user_to_login.is_staff,
+                'exp': int(dt.strftime('%s')) # turns dt string into a number,
+                
             },
             settings.SECRET_KEY,
             algorithm='HS256'
