@@ -1,7 +1,7 @@
-# from django.urls import path
-# from .views import 
+from django.urls import path
+from .views import ImageListView, ImageDetailView
 
-# urlpatterns = [
-#     path('', .as_view()),
-#     path('<int:pk>/', .as_view())
-# ]
+urlpatterns = [
+    path('', ImageListView.as_view()),
+    path('<int:pk>/', ImageDetailView.as_view())
+]
