@@ -7,5 +7,5 @@ class OctopusSerializer(serializers.ModelSerializer):
     class Meta:
         model = Octopus
         fields = ['id', 'name', 'scientific_name', 'description',
-                  'life_span', 'sightings', 'sightings_this_week', 'sightings_this_month', 'owner']
+                  'life_span', 'sightings', 'sightings_this_week', 'sightings_this_month', 'owner', 'images']
 

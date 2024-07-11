@@ -8,10 +8,10 @@ class Image(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     octopus = models.ForeignKey(
         'octopus.Octopus',
-        related_name='imagess',
+        related_name='images',
         on_delete=models.CASCADE
     )
-    owner = models.ForeignKey(
+    image_owner = models.ForeignKey(
         'jwt_auth.User',
         related_name='images',
         on_delete=models.CASCADE

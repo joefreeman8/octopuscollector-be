@@ -1,22 +1,24 @@
 [
-{
-  "model": "octopus.octopus",
-  "pk": 2,
-  "fields": {
-    "name": "Common Octopus",
-    "scientific_name": "Octopus Vulgaris",
-    "description": "Known for its intelligence and ability to camouflage, this octopus has a wide distribution in tropical and temperate seas around the world.",
-    "life_span": 2
+  {
+    "model": "octopus.octopus",
+    "pk": 2,
+    "fields": {
+      "name": "Common Octopus",
+      "scientific_name": "Octopus Vulgaris",
+      "description": "Known for its intelligence and ability to camouflage, this octopus has a wide distribution in tropical and temperate seas around the world.",
+      "life_span": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 3,
+    "fields": {
+      "name": "Giant Pacific Octopus",
+      "scientific_name": "Enteroctopus dofleini",
+      "description": "The largest species of octopus, it can weigh more than 600 pounds and measure over 30 feet across. Found in the North Pacific from Japan to California.",
+      "life_span": 5,
+      "owner": 1
+    }
   }
-},
-{
-  "model": "octopus.octopus",
-  "pk": 3,
-  "fields": {
-    "name": "Giant Pacific Octopus",
-    "scientific_name": "Enteroctopus dofleini",
-    "description": "The largest species of octopus, it can weigh more than 600 pounds and measure over 30 feet across. Found in the North Pacific from Japan to California.",
-    "life_span": 5
-  }
-}
 ]
