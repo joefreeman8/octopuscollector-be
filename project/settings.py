@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'octopus',
     'sightings',
+    'images',
     'jwt_auth'
 ]
 

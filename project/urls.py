@@ -22,4 +22,5 @@ urlpatterns = [
     path('api/octopus/', include('octopus.urls')),
     path('api/sightings/', include('sightings.urls')),
     path('api/auth/', include('jwt_auth.urls')),
+    # path('api/images/', include('images.urls')),
 ]
