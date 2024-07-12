@@ -8,6 +8,7 @@ from .serializers.common import OctopusSerializer
 from .serializers.populated import PopulatedOctopusSerializer
 from .permissions import IsAdminOrReadOnly
 
+from django.forms.models import model_to_dict
 
 class OctopusListView(APIView):
     permission_classes = (IsAdminOrReadOnly, )
@@ -45,8 +46,9 @@ class OctopusDetailView(APIView):
             
     def put(self, request, pk):
         octopus_to_edit = self.get_octopus(pk=pk)
+
         request.data['owner'] = request.user.id
-        update_octopus = OctopusSerializer(octopus_to_edit, data=request.data)
+        update_octopus = OctopusSerializer(octopus_to_edit, data=request.data, partial=True)
         
         if update_octopus.is_valid():
             update_octopus.save()

@@ -20,8 +20,9 @@ class ImageListView(APIView):
         return Response(serialized_images.data, status=status.HTTP_200_OK)
 
 
-    def post(self, request, octopus_pk):
+    def post(self, request):
         request.data['image_owner'] = request.user.id
+        octopus_pk = request.data['octopus']
         try:
             octopus = Octopus.objects.get(pk=octopus_pk)
         except Octopus.DoesNotExist:
