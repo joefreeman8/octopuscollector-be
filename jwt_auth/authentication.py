@@ -24,7 +24,7 @@ class JWTAuthentication(BasicAuthentication):
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])
             # get user from payload sub
             user = User.objects.get(pk=payload.get('sub'))
-            print("USER -> ", user)
+            # print("USER -> ", user)
 
         # incase token has expired or is incorrect formatting
         except jwt.exceptions.InvalidTokenError:
