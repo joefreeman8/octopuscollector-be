@@ -5,10 +5,10 @@ class Image(models.Model):
 
     class Meta:
         ordering = ['-created_at']
-
+        
     title = models.CharField(max_length=255)
     document = models.FileField(max_length=255)
-    created_at = models.DateField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     octopus = models.ForeignKey(
         'octopus.Octopus',
         related_name='images',
