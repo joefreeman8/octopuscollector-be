@@ -1,0 +1,90 @@
+[
+{
+  "model": "images.image",
+  "pk": 1,
+  "fields": {
+    "title": "Cool Octopus",
+    "document": "92d3acfd-9b20-47f5-850f-dc0bce39be51.jpg",
+    "created_at": "2024-07-16",
+    "octopus": 1,
+    "image_owner": 1
+  }
+},
+{
+  "model": "images.image",
+  "pk": 2,
+  "fields": {
+    "title": "Beauty",
+    "document": "61370e2a-4cf6-4c93-ba47-f57dae4f9e05.jpg",
+    "created_at": "2024-07-16",
+    "octopus": 1,
+    "image_owner": 1
+  }
+},
+{
+  "model": "images.image",
+  "pk": 3,
+  "fields": {
+    "title": "Spotted in Greece",
+    "document": "0ebd8d08-6442-48cb-9a6a-89b443b5dd67.jpg",
+    "created_at": "2024-07-16",
+    "octopus": 1,
+    "image_owner": 1
+  }
+},
+{
+  "model": "images.image",
+  "pk": 4,
+  "fields": {
+    "title": "Common Day Octopus",
+    "document": "c2ef5ee0-bdd7-4295-8e95-14759969c3bd.png",
+    "created_at": "2024-07-16",
+    "octopus": 1,
+    "image_owner": 1
+  }
+},
+{
+  "model": "images.image",
+  "pk": 5,
+  "fields": {
+    "title": "Huge",
+    "document": "865e0b39-5396-4b93-badc-417b3bf0efa5.jpeg",
+    "created_at": "2024-07-16",
+    "octopus": 2,
+    "image_owner": 1
+  }
+},
+{
+  "model": "images.image",
+  "pk": 6,
+  "fields": {
+    "title": "Incredible",
+    "document": "c3f2f748-9e80-4ba9-932b-8d38a5bdc40c.png",
+    "created_at": "2024-07-16",
+    "octopus": 2,
+    "image_owner": 1
+  }
+},
+{
+  "model": "images.image",
+  "pk": 7,
+  "fields": {
+    "title": "Super Friendly Octopus",
+    "document": "60466ec5-eaac-4676-b7a9-257c8eeea771.jpg",
+    "created_at": "2024-07-16",
+    "octopus": 2,
+    "image_owner": 1
+  }
+},
+{
+  "model": "images.image",
+  "pk": 9,
+  "fields": {
+    "title": "Wow!",
+    "document": "6c4d04a4-51c9-4bb0-993a-e5f24a0a9d57.jpg",
+    "created_at": "2024-07-16",
+    "octopus": 2,
+    "image_owner": 1
+  }
+}
+]

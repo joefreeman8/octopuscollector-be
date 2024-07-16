@@ -1,10 +1,10 @@
 [
   {
     "model": "octopus.octopus",
-    "pk": 2,
+    "pk": 1,
     "fields": {
       "name": "Common Octopus",
-      "scientific_name": "Octopus Vulgaris",
+      "scientific_name": "Octopus vulgaris",
       "description": "Known for its intelligence and ability to camouflage, this octopus has a wide distribution in tropical and temperate seas around the world.",
       "life_span": 2,
       "owner": 1
@@ -12,12 +12,210 @@
   },
   {
     "model": "octopus.octopus",
-    "pk": 3,
+    "pk": 2,
     "fields": {
       "name": "Giant Pacific Octopus",
       "scientific_name": "Enteroctopus dofleini",
       "description": "The largest species of octopus, it can weigh more than 600 pounds and measure over 30 feet across. Found in the North Pacific from Japan to California.",
       "life_span": 5,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 3,
+    "fields": {
+      "name": "Blue-Ringed Octopus",
+      "scientific_name": "Hapalochlaena lunulata",
+      "description": "Small but deadly, it's known for its bright blue rings that appear when threatened. The venom is potent enough to be fatal to humans.",
+      "life_span": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 4,
+    "fields": {
+      "name": "Mimic Octopus",
+      "scientific_name": "Thaumoctopus mimicus",
+      "description": "Famous for its ability to mimic other sea animals like flatfish, lionfish, and sea snakes to avoid predators. Found in Southeast Asia.",
+      "life_span": 1,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 5,
+    "fields": {
+      "name": "Dumbo Octopus",
+      "scientific_name": "Grimpoteuthis",
+      "description": "Named for its ear-like fins resembling the Disney character Dumbo. These deep-sea octopuses are found worldwide, typically in deep, cold ocean waters.",
+      "life_span": 5,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 6,
+    "fields": {
+      "name": "Vampire Squid",
+      "scientific_name": "Vampyroteuthis infernalis",
+      "description": "Despite its name, it’s more closely related to octopuses than squids. Lives in extreme deep ocean environments and can emit bioluminescent clouds.",
+      "life_span": 8,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 7,
+    "fields": {
+      "name": "California Two-Spot Octopus",
+      "scientific_name": "Octopus bimaculoides",
+      "description": "Easily identified by the two blue spots on either side of its head. Found in the Eastern Pacific, along the coast of California and Mexico.",
+      "life_span": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 8,
+    "fields": {
+      "name": "Coconut Octopus",
+      "scientific_name": "Amphioctopus marginatus",
+      "description": "Known for using coconut shells and seashells as tools for protection and shelter. Found in the western Pacific Ocean.",
+      "life_span": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 9,
+    "fields": {
+      "name": "Atlantic Pygmy Octopus",
+      "scientific_name": "Octopus joubini",
+      "description": "A small species that can fit in the palm of a hand, known for its curiosity and ability to escape from enclosures. Found in the Caribbean and along the Atlantic coast of the U.S.",
+      "life_span": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 10,
+    "fields": {
+      "name": "Wunderpus Photogenicus",
+      "scientific_name": "Wunderpus photogenicus",
+      "description": "Distinguished by its striking pattern of white spots and bands on a reddish-brown body. Known for its dramatic display when threatened. Found in the waters of the Indo-Pacific.",
+      "life_span": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 11,
+    "fields": {
+      "name": "Striped Pyjama Octopus",
+      "scientific_name": "Abdopus aculeatus",
+      "description": "Actually a species of cuttlefish. Known for its distinctive stripes that resemble pajamas, this small octopus is found in shallow waters across the Indo-Pacific region.",
+      "life_span": 1.5,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 12,
+    "fields": {
+      "name": "Red Octopus",
+      "scientific_name": "Octopus rubescens",
+      "description": "A small to medium-sized species known for its reddish-pink color, common along the Pacific coast of the United States.",
+      "life_span": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 13,
+    "fields": {
+      "name": "East Pacific Red Octopus",
+      "scientific_name": "Octopus rubescens",
+      "description": "Similar in appearance to the common red octopus but found specifically in the East Pacific region, noted for its intelligence and adaptability.",
+      "life_span": 3,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 14,
+    "fields": {
+      "name": "Maori Octopus",
+      "scientific_name": "Macroctopus maorum",
+      "description": "The largest octopus in New Zealand waters, known for its considerable size and strength, found in cooler southern Pacific waters.",
+      "life_span": 4,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 15,
+    "fields": {
+      "name": "Ornate Octopus",
+      "scientific_name": "Callistoctopus ornatus",
+      "description": "Features distinctive ornate patterns on its body, found in tropical waters of the western Pacific Ocean.",
+      "life_span": 1.5,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 16,
+    "fields": {
+      "name": "Larger Pacific Striped Octopus",
+      "scientific_name": "Octopus chierchiae",
+      "description": "Notable for its unique social behavior and striking striped appearance, found in the tropical eastern Pacific Ocean.",
+      "life_span": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 17,
+    "fields": {
+      "name": "Southern Sand Octopus",
+      "scientific_name": "Octopus kaurna",
+      "description": "Known for burrowing into the sand to hide from predators, this species is found along the southern coast of Australia.",
+      "life_span": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 18,
+    "fields": {
+      "name": "Atlantic White-spotted Octopus",
+      "scientific_name": "Callistoctopus macropus",
+      "description": "Characterized by its white spots and large size, this species is found in the Atlantic Ocean, particularly around the Iberian Peninsula.",
+      "life_span": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 19,
+    "fields": {
+      "name": "Night Octopus",
+      "scientific_name": "Callistoctopus nocturnus",
+      "description": "Active primarily at night, this octopus is found in the Indian and Pacific Oceans, known for its dark coloration and nocturnal hunting habits.",
+      "life_span": 2,
+      "owner": 1
+    }
+  },
+  {
+    "model": "octopus.octopus",
+    "pk": 20,
+    "fields": {
+      "name": "Mosaic Octopus",
+      "scientific_name": "Abdopus abaculus",
+      "description": "Small in size, this species is known for its mosaic-like patterns on its skin, found in the Indo-Pacific region.",
+      "life_span": 1,
       "owner": 1
     }
   }

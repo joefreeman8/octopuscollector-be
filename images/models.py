@@ -8,7 +8,7 @@ class Image(models.Model):
 
     title = models.CharField(max_length=255)
     document = models.FileField(max_length=255)
-    created_at = models.DateField()
+    created_at = models.DateField(auto_now_add=True)
     octopus = models.ForeignKey(
         'octopus.Octopus',
         related_name='images',
