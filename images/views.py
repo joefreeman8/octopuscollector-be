@@ -39,7 +39,6 @@ class ImageListView(APIView):
 
 class ImageDetailView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
-    parser_classes = [MultiPartParser, FormParser]
 
     def get_image(self, pk):
         try:
@@ -47,38 +46,9 @@ class ImageDetailView(APIView):
         except Image.DoesNotExist:
             raise NotFound(detail="Image not found")
 
-
-    def get(self, _request, octopus_pk, pk):
-        image = self.get_image(pk)
-        
-        if image.octopus_id != octopus_pk:
-            return Response({'detail': 'Image not associated with this octopus'}, status=status.HTTP_404_NOT_FOUND)
-        
-        serialized_image = ImageSerializer(Image)
-        return Response(serialized_image.data, status=status.HTTP_200_OK)
-
-
-    def put(self, request, octopus_pk, pk):
-        image = self.get_Image(pk)
-        
-        if image.octopus_id != octopus_pk:
-            return Response({'detail': 'Image not associated with this octopus'}, status=status.HTTP_404_NOT_FOUND)
-        
-        image_to_update = ImageSerializer(image, data=request.data, partial=True)
-        
-        if image_to_update.is_valid():
-            image_to_update.save()
-            return Response(image_to_update.data, status=status.HTTP_202_ACCEPTED)
-        
-        return Response(image_to_update.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-
-
-    def delete(self, _request, octopus_pk, pk):
-        image = self.get_Image(pk)
-        
-        if image.octopus_id != octopus_pk:
-            return Response({'detail': 'Image not associated with this octopus'}, status=status.HTTP_404_NOT_FOUND)
-        
-        image.delete()
+    
+    def delete(self, _request, pk):
+        image_to_delete = self.get_image(pk=pk)
+        image_to_delete.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
