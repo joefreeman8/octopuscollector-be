@@ -14,28 +14,38 @@ from pathlib import Path
 from whitenoise.storage import CompressedManifestStaticFilesStorage
 import environ
 import os
+import dj_database_url
+import django_on_heroku
 
 env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load environment variables from .env
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
+# Get ENVIRONMENT variable, default to dev if not there
+ENV = env('ENVIRONMENT', default='DEV')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9lgyf_3*u%**g1b2n$5)wojczm3=&g_#q46af!u!aa$xv)66dw'
+if ENV == 'DEV':
+    SECRET_KEY = 'django-insecure-9lgyf_3*u%**g1b2n$5)wojczm3=&g_#q46af!u!aa$xv)66dw'
+else:
+    SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Will be falsey if in production
+DEBUG = ENV == 'DEV'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+# CSRF_TRUSTED_ORIGINS = ['https://your-heroku-app.herokuapp.com']
 
 # Application definition
 
@@ -93,14 +103,17 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = { # added this to use postgres as the database instead of the default sqlite. do this before running the initial migrations or you will need to do it again
-    'default': {
+DATABASES = {}
+if ENV != 'DEV':
+    DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+else: 
+    DATABASES['default'] = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'octopus-collector',
         'HOST': 'localhost',
         'PORT': 5432
     }
-}
+
 
 
 # Password validation
@@ -173,3 +186,5 @@ AWS_S3_VERIFY = True
 
 # Configure S3 as the storage backend
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+django_on_heroku.settings(locals())
