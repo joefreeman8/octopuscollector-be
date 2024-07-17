@@ -1,11 +1,12 @@
 [
 {
   "model": "sightings.sighting",
-  "pk": 2,
+  "pk": 1,
   "fields": {
-    "date": "2024-06-30",
-    "location": "The Red Sea",
-    "octopus": 2
+    "date": "2024-05-02",
+    "location": "Atlantic Ocean",
+    "octopus": 2,
+    "sighting_owner": 5
   }
 }
 ]
