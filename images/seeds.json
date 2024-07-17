@@ -5,7 +5,7 @@
   "fields": {
     "title": "Cool Octopus",
     "document": "92d3acfd-9b20-47f5-850f-dc0bce39be51.jpg",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 1,
     "image_owner": 1
   }
@@ -16,7 +16,7 @@
   "fields": {
     "title": "Beauty",
     "document": "61370e2a-4cf6-4c93-ba47-f57dae4f9e05.jpg",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 1,
     "image_owner": 1
   }
@@ -27,7 +27,7 @@
   "fields": {
     "title": "Spotted in Greece",
     "document": "0ebd8d08-6442-48cb-9a6a-89b443b5dd67.jpg",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 1,
     "image_owner": 1
   }
@@ -38,7 +38,7 @@
   "fields": {
     "title": "Common Day Octopus",
     "document": "c2ef5ee0-bdd7-4295-8e95-14759969c3bd.png",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 1,
     "image_owner": 1
   }
@@ -49,7 +49,7 @@
   "fields": {
     "title": "Huge",
     "document": "865e0b39-5396-4b93-badc-417b3bf0efa5.jpeg",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 2,
     "image_owner": 1
   }
@@ -60,7 +60,7 @@
   "fields": {
     "title": "Incredible",
     "document": "c3f2f748-9e80-4ba9-932b-8d38a5bdc40c.png",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 2,
     "image_owner": 1
   }
@@ -71,7 +71,7 @@
   "fields": {
     "title": "Super Friendly Octopus",
     "document": "60466ec5-eaac-4676-b7a9-257c8eeea771.jpg",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 2,
     "image_owner": 1
   }
@@ -82,7 +82,7 @@
   "fields": {
     "title": "Wow!",
     "document": "6c4d04a4-51c9-4bb0-993a-e5f24a0a9d57.jpg",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 2,
     "image_owner": 1
   }
@@ -93,7 +93,7 @@
   "fields": {
     "title": "Cheeky Little Guy",
     "document": "839f4e7b-6cb8-4d18-bdd3-0414651112d3.webp",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 3,
     "image_owner": 1
   }
@@ -104,7 +104,7 @@
   "fields": {
     "title": "Blue Ring",
     "document": "c9672587-2b31-4084-84d2-51ce9a8b0ebc.jpg",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 3,
     "image_owner": 1
   }
@@ -115,7 +115,7 @@
   "fields": {
     "title": "So cool",
     "document": "18b274b4-ccd6-44c1-b0b9-2a50e0f87fef.jpg",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 3,
     "image_owner": 1
   }
@@ -126,9 +126,20 @@
   "fields": {
     "title": "Blue Ring Octopus",
     "document": "ab693448-6bed-43e3-a48b-8d421e7797fa.png",
-    "created_at": "2024-07-16",
+    "created_at": "2024-07-16T00:00:00Z",
     "octopus": 3,
     "image_owner": 1
+  }
+},
+{
+  "model": "images.image",
+  "pk": 14,
+  "fields": {
+    "title": "Lovely Octopus",
+    "document": "64184fe9-76b2-40e3-8497-8d02b947778d.png",
+    "created_at": "2024-07-16T14:50:41.757Z",
+    "octopus": 2,
+    "image_owner": 5
   }
 }
 ]
