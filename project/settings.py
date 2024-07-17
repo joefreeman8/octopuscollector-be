@@ -45,7 +45,7 @@ ALLOWED_HOSTS = ['*']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
-# CSRF_TRUSTED_ORIGINS = ['https://your-heroku-app.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = [env('TRUSTED_ORIGIN')]
 
 # Application definition
 
